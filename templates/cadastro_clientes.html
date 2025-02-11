@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<form class="container mt-5" method="POST">
+    <div class="mb-3">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome" placeholder="Digite seu nome">
+    </div>
+    <div class="mb-3">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu email">
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+  
+{% endblock conteudo %}

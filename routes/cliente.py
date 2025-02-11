@@ -1,32 +1,17 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from database.cliente import CLIENTES
 
 cliente_route = Blueprint("cliente", __name__)
 
-@cliente_route.route("/", methods=["GET"])
+@cliente_route.route("/")
 def lista_clientes():
     return render_template("lista_clientes.html", clientes=CLIENTES)
 
-@cliente_route.route("/", methods=["POST"])
-def inserir_cliente():
-    pass
-
-@cliente_route.route("/new", methods=["GET"])
-def form_cliente():
-    return render_template("form_cliente.html")
-
-@cliente_route.route("/<int:cliente_id>", methods=["GET"])
-def detalhe_cliente(cliente_id):
-    return render_template("detalhe_cliente.html")
-
-@cliente_route.route("/<int:cliente_id>/edit", methods=["GET"])
-def form_edit_cliente(cliente_id):
-    return render_template("form_edit_cliente.html")
-
-@cliente_route.route("/<int:cliente_id>/update", methods=["PUT"])
-def atualizar_cliente(cliente_id):
-    pass
-
-@cliente_route.route("/<int:cliente_id>/delete", methods=["DELETE"])
-def deletar_cliente(cliente_id):
-    pass
+@cliente_route.route("/cadastro", methods=["GET", "POST"])
+def cadastro_clientes():
+    if request.method == "GET":
+        return render_template("cadastro_clientes.html")
+    else:
+        nome = request.form.get("nome")
+        email = request.form.get("email")
+        return render_template("<p>teste</p>")
